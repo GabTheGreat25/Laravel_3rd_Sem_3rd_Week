@@ -22,17 +22,18 @@ class ArtistController extends Controller
      */
     public function index()
     {
-        $artists = Artist::with('albums')->orderBy('artist_name', 'DESC')->get();
-        // dd($artists);
-        // dump($artists);
-        // foreach ($artists as $artist) {
-        //     dump($artist);
-        //     dump($artist->artist_name);
-        //     dump($artist->albums); // ! lazy loaded with relationship one to many
-        //     foreach ($artist->albums as $album) {
-        //         dump($album->album_name);
-        //     }
-        // }
+        // $artists = Artist::with('albums')->orderBy('artist_name', 'DESC')->get();
+        $artists = Artist::all();
+        dump($artists);
+        dump($artists);
+        foreach ($artists as $artist) {
+            dump($artist);
+            dump($artist->artist_name);
+            dump($artist->albums); // ! lazy loaded with relationship one to many
+            foreach ($artist->albums as $album) {
+                dump($album->album_name);
+            }
+        }
         return View::make('artist.index', compact('artists'));
     }
 
