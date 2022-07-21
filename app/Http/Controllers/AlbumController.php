@@ -49,6 +49,7 @@ class AlbumController extends Controller
         $album->artist()->associate($artist);
         // ! Associate pag gusto ng relational without inner join
         // ? Use associate only for children not for parent
+        // ! When using belongs to bawal save so use associate
         $request->validate([
             'image' => 'mimes:jpeg,png,jpg,gif,svg',
         ]);
