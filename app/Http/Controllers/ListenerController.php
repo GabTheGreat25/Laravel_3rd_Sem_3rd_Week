@@ -18,11 +18,12 @@ class ListenerController extends Controller
      */
     public function index()
     {
-        $listeners = DB::table('listeners')
-            ->leftJoin('album_listener', 'listeners.id', '=', 'album_listener.listener_id')
-            ->leftJoin('albums', 'albums.id', '=', 'album_listener.album_id')
-            ->select('listeners.id', 'listeners.listener_name', 'albums.album_name')
-            ->get();
+        // $listeners = DB::table('listeners')
+        //     ->leftJoin('album_listener', 'listeners.id', '=', 'album_listener.listener_id')
+        //     ->leftJoin('albums', 'albums.id', '=', 'album_listener.album_id')
+        //     ->select('listeners.id', 'listeners.listener_name', 'albums.album_name')
+        //     ->get();
+        $listeners = Listener::with('albums')->get();
         return View::make('listener.index', compact('listeners'));
     }
 

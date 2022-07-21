@@ -23,7 +23,9 @@
         <td>{{$listener->id}}</td>
         <td>{{$listener->listener_name}}</td>
         <td>
-         <li>{{$listener->album_name}} </li>
+         @foreach($listener->albums as $album)
+                <li>{{$album->album_name}} </li>
+                @endforeach
         </td>
 <td><a href="{{action('ListenerController@edit', $listener->id)}}" class="btn btn-warning">Edit</a></td>
        <td>
